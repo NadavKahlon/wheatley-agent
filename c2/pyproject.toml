@@ -3,7 +3,11 @@ name = "c2"
 version = "0.1.0"
 description = "Wheatley Command & Control Malware"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "asyncio>=4.0.0",
+    "ipython>=9.10.1",
+    "loguru>=0.7.3",
+]
 
 [project.scripts]
-Wheatley-c2 = "c2.main:start"
+wheatley-c2 = "c2.main:start"
