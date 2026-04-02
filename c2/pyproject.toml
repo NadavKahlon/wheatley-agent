@@ -1,0 +1,9 @@
+[project]
+name = "c2"
+version = "0.1.0"
+description = "Wheatley Command & Control Malware"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+Wheatley-c2 = "c2.main:start"
