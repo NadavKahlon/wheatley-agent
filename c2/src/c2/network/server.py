@@ -39,7 +39,7 @@ class WheatleyServer:
         self.loop.run_until_complete(
             asyncio.start_server(self._accept_connection, self.host, self.port)
         )
-        logger.info(f"Collecting Wheatley connections at {self.host}:{self.port}")
+        logger.info(f"Listening for Wheatley connections at {self.host}:{self.port}")
         self.loop.run_forever()
 
     def start_daemon(self) -> None:
