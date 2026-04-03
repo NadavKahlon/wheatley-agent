@@ -30,6 +30,10 @@ class WheatleyConnection:
     def address(self) -> tuple[str, int]:
         return self.writer.get_extra_info("peername")
 
+    def __repr__(self) -> str:
+        host, port = self.address
+        return f"<wheatley@{host}:{port}>"
+
     def is_active(self) -> bool:
         return not self.writer.is_closing()
 
