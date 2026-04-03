@@ -4,10 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.14.37111.16 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wheatley", "Wheatley\Wheatley.vcxproj", "{C47413BF-3474-48A8-A600-8888A021C74F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DB3EEA0F-A05F-47B9-8968-A776235C0832} = {DB3EEA0F-A05F-47B9-8968-A776235C0832}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sockets", "Sockets\Sockets.vcxproj", "{CACF291A-8DEB-4312-ABF7-A429A4AA6412}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wheatlib", "Wheatlib\Wheatlib.vcxproj", "{DB3EEA0F-A05F-47B9-8968-A776235C0832}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CACF291A-8DEB-4312-ABF7-A429A4AA6412} = {CACF291A-8DEB-4312-ABF7-A429A4AA6412}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

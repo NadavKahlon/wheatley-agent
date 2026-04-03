@@ -125,6 +125,11 @@
   <ItemGroup>
     <ClCompile Include="Wheatley.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wheatlib\Wheatlib.vcxproj">
+      <Project>{db3eea0f-a05f-47b9-8968-a776235c0832}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
