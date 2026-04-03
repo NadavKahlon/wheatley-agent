@@ -2,14 +2,14 @@ from importlib.metadata import version
 
 import IPython
 
-WHEATLEY_C2_VERSION = version("c2")
-WHEATLEY_C2_BANNER = (
+WHEATLEY_SERVER_VERSION = version("c2")
+WHEATLEY_SERVER_BANNER = (
     f"┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
     f"┃ Wheatley Command & Control Server ┃\n"
     f"┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n"
-    f"Software version: {WHEATLEY_C2_VERSION}\n"
+    f"Software version: {WHEATLEY_SERVER_VERSION}\n"
     f"Powered by IPython {IPython.__version__}\n"
 )
 
-WHEATLY_C2_HOST = "172.24.128.1"
-WHEATLY_C2_PORT = 45454
+WHEATLY_SERVER_HOST = "172.24.128.1"
+WHEATLY_SERVER_PORT = 45454

@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 import IPython
 from traitlets.config import Config
 
-from c2.constants import WHEATLEY_C2_BANNER
+from c2.constants import WHEATLEY_SERVER_BANNER
 
 if TYPE_CHECKING:
     from c2.network.server import WheatleyServer
@@ -25,7 +25,7 @@ class WheatleyServerShell:
     def launch(self) -> None:
         c = Config()
         c.InteractiveShellEmbed.banner1 = ""
-        c.InteractiveShellEmbed.banner2 = WHEATLEY_C2_BANNER
+        c.InteractiveShellEmbed.banner2 = WHEATLEY_SERVER_BANNER
         c.InteractiveShellEmbed.quiet = True
         IPython.embed(
             colors="neutral",
