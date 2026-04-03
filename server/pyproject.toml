@@ -1,7 +1,7 @@
 [project]
-name = "c2"
+name = "wheatley"
 version = "0.1.0"
-description = "Wheatley Command & Control Malware"
+description = "Wheatley Command & Control Server"
 requires-python = ">=3.11"
 dependencies = [
     "asyncio>=4.0.0",
@@ -10,4 +10,4 @@ dependencies = [
 ]
 
 [project.scripts]
-wheatley-c2 = "c2.main:start"
+wheatley-server = "wheatley.main:start"

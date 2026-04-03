@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 from loguru import logger
 
 if TYPE_CHECKING:
-    from c2.network.server import WheatleyServer
+    from wheatley.network.server import WheatleyServer
 
 
 class WheatleyConnection:

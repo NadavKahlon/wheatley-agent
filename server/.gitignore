@@ -1,0 +1,3 @@
+.venv/*
+src/wheatley.egg-info
+build/*

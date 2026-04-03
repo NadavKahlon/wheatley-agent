@@ -3,10 +3,10 @@ from typing import TYPE_CHECKING
 import IPython
 from traitlets.config import Config
 
-from c2.constants import WHEATLEY_SERVER_BANNER
+from wheatley.constants import WHEATLEY_SERVER_BANNER
 
 if TYPE_CHECKING:
-    from c2.network.server import WheatleyServer
+    from wheatley.network.server import WheatleyServer
 
 
 class WheatleyServerShell:

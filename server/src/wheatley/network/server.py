@@ -1,11 +1,10 @@
 import asyncio
 import threading
-import time
 from itertools import count
 
 from loguru import logger
 
-from c2.network.connection import WheatleyConnection
+from wheatley.network.connection import WheatleyConnection
 
 
 class WheatleyServer:
