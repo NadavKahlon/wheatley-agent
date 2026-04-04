@@ -139,10 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\Sockets.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Sockets.cpp" />
+    <ClCompile Include="src\TcpConnection.cpp" />
+    <ClCompile Include="include\TcpConnection.hpp" />
+    <ClCompile Include="src\WinsockContext.cpp" />
+    <ClCompile Include="include\WinsockContext.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
