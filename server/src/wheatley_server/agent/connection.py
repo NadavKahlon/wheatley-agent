@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 from loguru import logger
 
 if TYPE_CHECKING:
-    from wheatley.server import WheatleyServer
+    from wheatley_server.server import WheatleyServer
 
 
 class AgentConnection:

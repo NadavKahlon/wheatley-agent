@@ -4,7 +4,7 @@ from itertools import count
 
 from loguru import logger
 
-from wheatley.agent.connection import AgentConnection
+from wheatley_server.agent.connection import AgentConnection
 
 
 class WheatleyServer:

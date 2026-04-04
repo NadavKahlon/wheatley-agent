@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 import IPython
 
 if TYPE_CHECKING:
-    from wheatley.server import WheatleyServer
+    from wheatley_server.server import WheatleyServer
 
 
 class LocalShell:

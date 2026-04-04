@@ -2,7 +2,7 @@ from importlib.metadata import version
 
 import IPython
 
-WHEATLEY_SERVER_VERSION = version("wheatley")
+WHEATLEY_SERVER_VERSION = version("wheatley_server")
 WHEATLEY_SERVER_BANNER = (
     f"\n"
     f"┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"

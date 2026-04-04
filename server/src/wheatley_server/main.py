@@ -1,9 +1,9 @@
 import argparse
 
-from wheatley.constants import WHEATLY_SERVER_PORT, WHEATLY_SERVER_HOST, \
+from wheatley_server.constants import WHEATLY_SERVER_PORT, WHEATLY_SERVER_HOST, \
     WHEATLEY_SERVER_BANNER, WHEATLEY_SERVER_INTERACTIVE_BANNER
-from wheatley.server import WheatleyServer
-from wheatley.shell import LocalShell
+from wheatley_server.server import WheatleyServer
+from wheatley_server.shell import LocalShell
 
 
 def parse_args() -> argparse.Namespace:
@@ -13,7 +13,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "-i", "--interactive",
         action="store_true",
-        help="Start a local interactive shell",
+        help="Start the server with a local interactive shell",
     )
     return parser.parse_args()
 

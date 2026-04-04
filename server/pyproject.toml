@@ -1,5 +1,5 @@
 [project]
-name = "wheatley"
+name = "wheatley-server"
 version = "0.1.0"
 description = "Wheatley Command & Control Server"
 requires-python = ">=3.11"
@@ -10,4 +10,4 @@ dependencies = [
 ]
 
 [project.scripts]
-wheatley-server = "wheatley.main:start"
+wheatley-server = "wheatley_server.main:start"
