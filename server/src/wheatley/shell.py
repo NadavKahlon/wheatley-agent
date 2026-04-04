@@ -1,15 +1,12 @@
 from typing import TYPE_CHECKING
 
 import IPython
-from traitlets.config import Config
-
-from wheatley.constants import WHEATLEY_SERVER_BANNER
 
 if TYPE_CHECKING:
-    from wheatley.network.server import WheatleyServer
+    from wheatley.server import WheatleyServer
 
 
-class WheatleyServerShell:
+class LocalShell:
     _server: "WheatleyServer"
 
     def __init__(self, server: "WheatleyServer"):
@@ -23,13 +20,9 @@ class WheatleyServerShell:
         }
 
     def launch(self) -> None:
-        c = Config()
-        c.InteractiveShellEmbed.banner1 = ""
-        c.InteractiveShellEmbed.banner2 = WHEATLEY_SERVER_BANNER
-        c.InteractiveShellEmbed.quiet = True
         IPython.embed(
-            colors="neutral",
-            config=c,
-            header="",
             user_ns=self._prepare_user_ns(),
+            colors="neutral",
+            header="",
+            display_banner=False,
         )

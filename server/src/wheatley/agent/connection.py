@@ -4,10 +4,10 @@ from typing import TYPE_CHECKING
 from loguru import logger
 
 if TYPE_CHECKING:
-    from wheatley.network.server import WheatleyServer
+    from wheatley.server import WheatleyServer
 
 
-class WheatleyConnection:
+class AgentConnection:
 
     id: int
     reader: asyncio.StreamReader

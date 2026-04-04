@@ -4,6 +4,14 @@ import IPython
 
 WHEATLEY_SERVER_VERSION = version("wheatley")
 WHEATLEY_SERVER_BANNER = (
+    f"\n"
+    f"┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
+    f"┃ Wheatley Command & Control Server ┃\n"
+    f"┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n"
+    f"Software version: {WHEATLEY_SERVER_VERSION}\n"
+)
+WHEATLEY_SERVER_INTERACTIVE_BANNER = (
+    f"\n"
     f"┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
     f"┃ Wheatley Command & Control Server ┃\n"
     f"┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n"
