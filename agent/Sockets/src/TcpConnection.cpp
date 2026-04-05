@@ -78,3 +78,25 @@ std::vector<uint8_t> TcpConnection::recv(size_t bufferSize) {
     buffer.resize(bytesRead);
     return buffer;
 }
+
+std::vector<uint8_t> TcpConnection::recvExactly(size_t len)
+{
+    std::vector<uint8_t> buffer(len);
+    size_t totalRead = 0;
+    while (totalRead < len) {
+        int bytesRead = ::recv(m_socket,
+            reinterpret_cast<char*>(buffer.data() + totalRead),
+            static_cast<int>(len - totalRead), 0
+        );
+        if (bytesRead == SOCKET_ERROR) {
+            throw std::runtime_error("Recv failed: " + std::to_string(WSAGetLastError()));
+        }
+        if (bytesRead == 0) {
+            // Peer closed connection - return whatever we got
+            buffer.resize(totalRead);
+            return buffer;
+        }
+        totalRead += bytesRead;
+    }
+    return buffer;
+}

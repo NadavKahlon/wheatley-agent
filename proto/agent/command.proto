@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package agent.command;
+
+
+message Request {
+    uint32 id = 1;
+    oneof request {
+        HealthCheckRequest health_check = 2;
+    }
+}
+
+message Response {
+    uint32 id = 1;
+    oneof request {
+        HealthCheckResponse health_check = 2;
+    }
+}
+
+message HealthCheckRequest {}
+
+message HealthCheckResponse {}

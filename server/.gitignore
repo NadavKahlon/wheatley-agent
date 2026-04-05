@@ -3,3 +3,7 @@
 *.egg-info
 build/*
 __pycache__/
+
+# Protobuf generated files
+*_pb2.py
+*_pb2.pyi

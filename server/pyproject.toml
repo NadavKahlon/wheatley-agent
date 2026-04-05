@@ -7,6 +7,8 @@ dependencies = [
     "asyncio>=4.0.0",
     "ipython>=9.10.1",
     "loguru>=0.7.3",
+    "mypy-protobuf>=5.0.0",
+    "protobuf>=7.34.1",
 ]
 
 [project.scripts]

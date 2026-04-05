@@ -18,3 +18,7 @@ Generated\ Files/
 x64/
 x86/
 build/
+
+# Protobuf generated files
+*.pb.cc
+*.pb.h
