@@ -1,8 +1,11 @@
 import struct
+from typing import Iterator, BinaryIO
 
 from google.protobuf.message import Message
 
 import socket
+
+from wheatley_server.proto import stream_pb2
 
 
 def recv_exactly(sock, size):
@@ -11,7 +14,7 @@ def recv_exactly(sock, size):
         packet = sock.recv(size - len(data))
         if not packet:
             raise ConnectionError(
-                f"Connection closed before receiving {size} expected bytes (got {len(data)})."
+                f"Connection closed before receiving {size} expected bytes (got {len(data)})"
             )
         data.extend(packet)
     return bytes(data)
@@ -44,3 +47,24 @@ def is_socket_closed(sock: socket.socket) -> bool:
     except ConnectionResetError:
         return True  # socket was closed for some other reason
     return False
+
+
+def recv_stream(sock: socket.socket) -> Iterator[bytes]:
+    while True:
+        packet = stream_pb2.WheatleyStreamPacket()
+        recv_protobuf(sock, packet)
+        yield packet.chunk
+        if packet.is_last:
+            break
+
+
+def send_stream(sock: socket.socket, stream: BinaryIO, chunk_size: int = 4096) -> None:
+    next_chunk = stream.read(chunk_size)
+    while next_chunk != "":
+        curr_chunk = next_chunk
+        next_chunk = stream.read(chunk_size)
+
+        packet = stream_pb2.WheatleyStreamPacket()
+        packet.chunk = curr_chunk
+        packet.is_last = next_chunk == ""
+        send_protobuf(sock, packet)

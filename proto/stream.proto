@@ -1,0 +1,11 @@
+// Wheatley File Transfer Protocol
+
+syntax = "proto3";
+
+package stream;
+
+
+message WheatleyStreamPacket {
+    bool is_last = 1;
+    bytes chunk = 2;
+}

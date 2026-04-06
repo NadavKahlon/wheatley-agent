@@ -6,6 +6,8 @@ message Request {
     oneof request {
         HealthCheckRequest health_check = 2;
         ExecuteRequest execute = 3;
+        GetFileRequest get_file = 4;
+        PutFileRequest put_file = 5;
     }
 }
 
@@ -13,6 +15,8 @@ message Response {
     oneof response {
         HealthCheckResponse health_check = 2;
         ExecuteResponse execute = 3;
+        GetFileResponse get_file = 4;
+        PutFileResponse put_file = 5;
     }
 }
 
@@ -28,3 +32,17 @@ message ExecuteRequest {
 message ExecuteResponse {
     string output = 1;
 }
+
+message GetFileRequest {
+    string path = 1;
+    uint32 suggested_chunk_size = 2;
+}
+
+message GetFileResponse {}
+
+
+message PutFileRequest {
+    string path = 1;
+}
+
+message PutFileResponse {}
