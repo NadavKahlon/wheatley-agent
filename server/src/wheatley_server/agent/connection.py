@@ -25,30 +25,37 @@ class AgentConnection:
         server: "WheatleyServer",
     ):
         host, port = address
-        logger.info(
-            f"Received connection from agent at {host}:{port} (ConnID: {conn_id})"
-        )
         self.id = conn_id
         self.sock = sock
         self.address = address
         self._server = server
+        logger.info(f"{self}: Initialized new connection")
 
     def __repr__(self) -> str:
         host, port = self.address
         return f"<conn#{self.id}@{host}:{port}>"
 
     def close(self) -> None:
-        logger.debug(f"{self}\tConnection closed")
+        logger.debug(f"{self}: Connection closed")
         self.sock.close()
 
     def health_check(self) -> None:
         request = command_pb2.Request()
         request.health_check.CopyFrom(command_pb2.HealthCheckRequest())
         send_protobuf(self.sock, request)
-        logger.debug(f"{self}\tSent health check request")
+        logger.debug(f"{self}: Sent health check request")
 
         response = command_pb2.Response()
-        response = recv_protobuf(self.sock, response)
-        active_field = response.WhichOneof("response")
-        if active_field == "health_check":
-            logger.debug(f"{self}\tReceived health check response")
+        recv_protobuf(self.sock, response)
+        if response.WhichOneof("response") == "health_check":
+            logger.debug(f"{self}: Received health check response")
+
+    def execute(self, command: str) -> str:
+        request = command_pb2.Request()
+        request.execute.CopyFrom(command_pb2.ExecuteRequest())
+        request.execute.command = command
+        send_protobuf(self.sock, request)
+
+        response = command_pb2.Response()
+        recv_protobuf(self.sock, response)
+        return response.execute.output

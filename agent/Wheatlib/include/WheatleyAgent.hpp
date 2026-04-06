@@ -20,6 +20,8 @@ public:
     agent::command::Response processCommandRequest(agent::command::Request request);
     void sendCommandResponse(agent::command::Response response);
 
+    std::string handleExecute(const std::string &command);
+
 private:
 
     std::unique_ptr<TcpConnection> m_connection;

