@@ -1,6 +1,7 @@
 from typing import TYPE_CHECKING
 
 import IPython
+from IPython.terminal.embed import InteractiveShellEmbed
 
 if TYPE_CHECKING:
     from wheatley_server.server import WheatleyServer
@@ -19,10 +20,11 @@ class LocalShell:
             "connections": self._server.connections,
         }
 
-    def launch(self) -> None:
-        IPython.embed(
+    async def launch(self) -> None:
+        shell = InteractiveShellEmbed(
             user_ns=self._prepare_user_ns(),
             colors="neutral",
             header="",
             display_banner=False,
         )
+        shell()
