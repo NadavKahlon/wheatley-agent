@@ -3,8 +3,8 @@ from typing import TYPE_CHECKING
 
 from loguru import logger
 
-from wheatley_server.proto import write_protobuf, read_protobuf
-from wheatley_server.proto.agent import commands_pb2
+from wheatley_server.proto.agent import command_pb2
+from wheatley_server.proto_utils import write_protobuf, read_protobuf
 
 if TYPE_CHECKING:
     from wheatley_server.server import WheatleyServer
@@ -50,8 +50,16 @@ class AgentConnection:
 
         self._server.loop.call_soon_threadsafe(_close)
 
-    def health_check(self) -> None:
-        write_protobuf(self.writer, commands_pb2.HealthCheckRequest())
+    async def health_check(self) -> None:
+        request = command_pb2.Request()
+        request.health_check.CopyFrom(command_pb2.HealthCheckRequest())
+        write_protobuf(self.writer, request)
         logger.debug(f"Send health check request to {self.address} (ConnID: {self.id})")
-        read_protobuf(self.reader, commands_pb2.HealthCheckResponse)
-        logger.debug(f"Received health check response from {self.address} (ConnID: {self.id})")
+
+        response = command_pb2.Response()
+        response = await read_protobuf(self.reader, response)
+        active_field = response.WhichOneof("response")
+        if active_field == "health_check":
+            logger.debug(
+                f"Received health check response from {self.address} (ConnID: {self.id})"
+            )

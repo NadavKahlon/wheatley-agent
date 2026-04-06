@@ -65,9 +65,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr Response::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        id_{0u},
-        request_{},
+      : resopnse_{},
+        _cached_size_{0},
         _oneof_case_{} {}
 
 template <typename>
@@ -92,9 +91,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr Request::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        id_{0u},
-        request_{},
+      : request_{},
+        _cached_size_{0},
         _oneof_case_{} {}
 
 template <typename>
@@ -125,24 +123,14 @@ static constexpr const ::_pb::ServiceDescriptor* PROTOBUF_NONNULL* PROTOBUF_NULL
 const ::uint32_t
     TableStruct_agent_2fcommand_2eproto::offsets[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
         protodesc_cold) = {
-        0x085, // bitmap
-        PROTOBUF_FIELD_OFFSET(::agent::command::Request, _impl_._has_bits_),
+        0x004, // bitmap
         PROTOBUF_FIELD_OFFSET(::agent::command::Request, _impl_._oneof_case_[0]),
-        7, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::agent::command::Request, _impl_.id_),
         PROTOBUF_FIELD_OFFSET(::agent::command::Request, _impl_.request_),
         PROTOBUF_FIELD_OFFSET(::agent::command::Request, _impl_.request_),
-        0,
-        ~0u,
-        0x085, // bitmap
-        PROTOBUF_FIELD_OFFSET(::agent::command::Response, _impl_._has_bits_),
+        0x004, // bitmap
         PROTOBUF_FIELD_OFFSET(::agent::command::Response, _impl_._oneof_case_[0]),
-        7, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::agent::command::Response, _impl_.id_),
-        PROTOBUF_FIELD_OFFSET(::agent::command::Response, _impl_.request_),
-        PROTOBUF_FIELD_OFFSET(::agent::command::Response, _impl_.request_),
-        0,
-        ~0u,
+        PROTOBUF_FIELD_OFFSET(::agent::command::Response, _impl_.resopnse_),
+        PROTOBUF_FIELD_OFFSET(::agent::command::Response, _impl_.resopnse_),
         0x000, // bitmap
         0x000, // bitmap
 };
@@ -150,9 +138,9 @@ const ::uint32_t
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, sizeof(::agent::command::Request)},
-        {9, sizeof(::agent::command::Response)},
-        {18, sizeof(::agent::command::HealthCheckRequest)},
-        {19, sizeof(::agent::command::HealthCheckResponse)},
+        {4, sizeof(::agent::command::Response)},
+        {8, sizeof(::agent::command::HealthCheckRequest)},
+        {9, sizeof(::agent::command::HealthCheckResponse)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::agent::command::_Request_default_instance_._instance,
@@ -162,19 +150,19 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
 };
 const char descriptor_table_protodef_agent_2fcommand_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
-    "\n\023agent/command.proto\022\ragent.command\"[\n\007"
-    "Request\022\n\n\002id\030\001 \001(\r\0229\n\014health_check\030\002 \001("
-    "\0132!.agent.command.HealthCheckRequestH\000B\t"
-    "\n\007request\"]\n\010Response\022\n\n\002id\030\001 \001(\r\022:\n\014hea"
-    "lth_check\030\002 \001(\0132\".agent.command.HealthCh"
-    "eckResponseH\000B\t\n\007request\"\024\n\022HealthCheckR"
-    "equest\"\025\n\023HealthCheckResponseb\006proto3"
+    "\n\023agent/command.proto\022\ragent.command\"O\n\007"
+    "Request\0229\n\014health_check\030\002 \001(\0132!.agent.co"
+    "mmand.HealthCheckRequestH\000B\t\n\007request\"R\n"
+    "\010Response\022:\n\014health_check\030\002 \001(\0132\".agent."
+    "command.HealthCheckResponseH\000B\n\n\010resopns"
+    "e\"\024\n\022HealthCheckRequest\"\025\n\023HealthCheckRe"
+    "sponseb\006proto3"
 };
 static ::absl::once_flag descriptor_table_agent_2fcommand_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_agent_2fcommand_2eproto = {
     false,
     false,
-    277,
+    254,
     descriptor_table_protodef_agent_2fcommand_2eproto,
     "agent/command.proto",
     &descriptor_table_agent_2fcommand_2eproto_once,
@@ -193,10 +181,6 @@ namespace command {
 
 class Request::_Internal {
  public:
-  using HasBits =
-      decltype(::std::declval<Request>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(Request, _impl_._has_bits_);
   static constexpr ::int32_t kOneofCaseOffset =
       PROTOBUF_FIELD_OFFSET(::agent::command::Request, _impl_._oneof_case_);
 };
@@ -227,9 +211,8 @@ PROTOBUF_NDEBUG_INLINE Request::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
     [[maybe_unused]] const ::agent::command::Request& from_msg)
-      : _has_bits_{from._has_bits_},
+      : request_{},
         _cached_size_{0},
-        request_{},
         _oneof_case_{from._oneof_case_[0]} {}
 
 Request::Request(
@@ -245,7 +228,6 @@ Request::Request(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  _impl_.id_ = from._impl_.id_;
   switch (request_case()) {
     case REQUEST_NOT_SET:
       break;
@@ -259,13 +241,12 @@ Request::Request(
 PROTOBUF_NDEBUG_INLINE Request::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
-      : _cached_size_{0},
-        request_{},
+      : request_{},
+        _cached_size_{0},
         _oneof_case_{} {}
 
 inline void Request::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.id_ = {};
 }
 Request::~Request() {
   // @@protoc_insertion_point(destructor:agent.command.Request)
@@ -347,16 +328,16 @@ Request::GetClassData() const {
   return Request_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 2, 1, 0, 2>
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2>
 Request::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(Request, _impl_._has_bits_),
+    0,  // no _has_bits_
     0, // no _extensions_
     2, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967293,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    1,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     Request_class_data_.base(),
@@ -366,15 +347,10 @@ Request::_table_ = {
     ::_pbi::TcParser::GetTable<::agent::command::Request>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // uint32 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Request, _impl_.id_), 0>(),
-     {8, 0, 0,
-      PROTOBUF_FIELD_OFFSET(Request, _impl_.id_)}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
-    // uint32 id = 1;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
     // .agent.command.HealthCheckRequest health_check = 2;
     {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_.health_check_), _Internal::kOneofCaseOffset + 0, 0, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
   }},
@@ -391,9 +367,7 @@ PROTOBUF_NOINLINE void Request::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.id_ = 0u;
   clear_request();
-  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -414,16 +388,6 @@ PROTOBUF_NOINLINE void Request::Clear() {
   // @@protoc_insertion_point(serialize_to_array_start:agent.command.Request)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
-
-  cached_has_bits = this_._impl_._has_bits_[0];
-  // uint32 id = 1;
-  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-    if (this_._internal_id() != 0) {
-      target = stream->EnsureSpace(target);
-      target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-          1, this_._internal_id(), target);
-    }
-  }
 
   // .agent.command.HealthCheckRequest health_check = 2;
   if (this_.request_case() == kHealthCheck) {
@@ -455,16 +419,6 @@ PROTOBUF_NOINLINE void Request::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void)cached_has_bits;
 
-   {
-    // uint32 id = 1;
-    cached_has_bits = this_._impl_._has_bits_[0];
-    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-      if (this_._internal_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-            this_._internal_id());
-      }
-    }
-  }
   switch (this_.request_case()) {
     // .agent.command.HealthCheckRequest health_check = 2;
     case kHealthCheck: {
@@ -494,13 +448,6 @@ void Request::MergeImpl(::google::protobuf::MessageLite& to_msg,
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-    if (from._internal_id() != 0) {
-      _this->_impl_.id_ = from._impl_.id_;
-    }
-  }
-  _this->_impl_._has_bits_[0] |= cached_has_bits;
   if (const uint32_t oneof_from_case =
           from._impl_._oneof_case_[0]) {
     const uint32_t oneof_to_case = _this->_impl_._oneof_case_[0];
@@ -540,8 +487,6 @@ void Request::CopyFrom(const Request& from) {
 void Request::InternalSwap(Request* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  swap(_impl_.id_, other->_impl_.id_);
   swap(_impl_.request_, other->_impl_.request_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
@@ -553,24 +498,20 @@ void Request::InternalSwap(Request* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
 
 class Response::_Internal {
  public:
-  using HasBits =
-      decltype(::std::declval<Response>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(Response, _impl_._has_bits_);
   static constexpr ::int32_t kOneofCaseOffset =
       PROTOBUF_FIELD_OFFSET(::agent::command::Response, _impl_._oneof_case_);
 };
 
 void Response::set_allocated_health_check(::agent::command::HealthCheckResponse* PROTOBUF_NULLABLE health_check) {
   ::google::protobuf::Arena* message_arena = GetArena();
-  clear_request();
+  clear_resopnse();
   if (health_check) {
     ::google::protobuf::Arena* submessage_arena = health_check->GetArena();
     if (message_arena != submessage_arena) {
       health_check = ::google::protobuf::internal::GetOwnedMessage(message_arena, health_check, submessage_arena);
     }
     set_has_health_check();
-    _impl_.request_.health_check_ = health_check;
+    _impl_.resopnse_.health_check_ = health_check;
   }
   // @@protoc_insertion_point(field_set_allocated:agent.command.Response.health_check)
 }
@@ -587,9 +528,8 @@ PROTOBUF_NDEBUG_INLINE Response::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
     [[maybe_unused]] const ::agent::command::Response& from_msg)
-      : _has_bits_{from._has_bits_},
+      : resopnse_{},
         _cached_size_{0},
-        request_{},
         _oneof_case_{from._oneof_case_[0]} {}
 
 Response::Response(
@@ -605,12 +545,11 @@ Response::Response(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  _impl_.id_ = from._impl_.id_;
-  switch (request_case()) {
-    case REQUEST_NOT_SET:
+  switch (resopnse_case()) {
+    case RESOPNSE_NOT_SET:
       break;
       case kHealthCheck:
-        _impl_.request_.health_check_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.request_.health_check_);
+        _impl_.resopnse_.health_check_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.resopnse_.health_check_);
         break;
   }
 
@@ -619,13 +558,12 @@ Response::Response(
 PROTOBUF_NDEBUG_INLINE Response::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
-      : _cached_size_{0},
-        request_{},
+      : resopnse_{},
+        _cached_size_{0},
         _oneof_case_{} {}
 
 inline void Response::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.id_ = {};
 }
 Response::~Response() {
   // @@protoc_insertion_point(destructor:agent.command.Response)
@@ -638,29 +576,29 @@ inline void Response::SharedDtor(MessageLite& self) {
   }
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
-  if (this_.has_request()) {
-    this_.clear_request();
+  if (this_.has_resopnse()) {
+    this_.clear_resopnse();
   }
   this_._impl_.~Impl_();
 }
 
-void Response::clear_request() {
+void Response::clear_resopnse() {
 // @@protoc_insertion_point(one_of_clear_start:agent.command.Response)
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  switch (request_case()) {
+  switch (resopnse_case()) {
     case kHealthCheck: {
       if (GetArena() == nullptr) {
-        delete _impl_.request_.health_check_;
+        delete _impl_.resopnse_.health_check_;
       } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_.health_check_);
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.resopnse_.health_check_);
       }
       break;
     }
-    case REQUEST_NOT_SET: {
+    case RESOPNSE_NOT_SET: {
       break;
     }
   }
-  _impl_._oneof_case_[0] = REQUEST_NOT_SET;
+  _impl_._oneof_case_[0] = RESOPNSE_NOT_SET;
 }
 
 
@@ -707,16 +645,16 @@ Response::GetClassData() const {
   return Response_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 2, 1, 0, 2>
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2>
 Response::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(Response, _impl_._has_bits_),
+    0,  // no _has_bits_
     0, // no _extensions_
     2, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967293,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    1,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     Response_class_data_.base(),
@@ -726,17 +664,12 @@ Response::_table_ = {
     ::_pbi::TcParser::GetTable<::agent::command::Response>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // uint32 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Response, _impl_.id_), 0>(),
-     {8, 0, 0,
-      PROTOBUF_FIELD_OFFSET(Response, _impl_.id_)}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
-    // uint32 id = 1;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
     // .agent.command.HealthCheckResponse health_check = 2;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.request_.health_check_), _Internal::kOneofCaseOffset + 0, 0, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.resopnse_.health_check_), _Internal::kOneofCaseOffset + 0, 0, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
   }},
   {{
       {::_pbi::TcParser::GetTable<::agent::command::HealthCheckResponse>()},
@@ -751,9 +684,7 @@ PROTOBUF_NOINLINE void Response::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.id_ = 0u;
-  clear_request();
-  _impl_._has_bits_.Clear();
+  clear_resopnse();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -775,20 +706,10 @@ PROTOBUF_NOINLINE void Response::Clear() {
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  cached_has_bits = this_._impl_._has_bits_[0];
-  // uint32 id = 1;
-  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-    if (this_._internal_id() != 0) {
-      target = stream->EnsureSpace(target);
-      target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-          1, this_._internal_id(), target);
-    }
-  }
-
   // .agent.command.HealthCheckResponse health_check = 2;
-  if (this_.request_case() == kHealthCheck) {
+  if (this_.resopnse_case() == kHealthCheck) {
     target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        2, *this_._impl_.request_.health_check_, this_._impl_.request_.health_check_->GetCachedSize(), target,
+        2, *this_._impl_.resopnse_.health_check_, this_._impl_.resopnse_.health_check_->GetCachedSize(), target,
         stream);
   }
 
@@ -815,24 +736,14 @@ PROTOBUF_NOINLINE void Response::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void)cached_has_bits;
 
-   {
-    // uint32 id = 1;
-    cached_has_bits = this_._impl_._has_bits_[0];
-    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-      if (this_._internal_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-            this_._internal_id());
-      }
-    }
-  }
-  switch (this_.request_case()) {
+  switch (this_.resopnse_case()) {
     // .agent.command.HealthCheckResponse health_check = 2;
     case kHealthCheck: {
       total_size += 1 +
-                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_.health_check_);
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.resopnse_.health_check_);
       break;
     }
-    case REQUEST_NOT_SET: {
+    case RESOPNSE_NOT_SET: {
       break;
     }
   }
@@ -854,20 +765,13 @@ void Response::MergeImpl(::google::protobuf::MessageLite& to_msg,
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-    if (from._internal_id() != 0) {
-      _this->_impl_.id_ = from._impl_.id_;
-    }
-  }
-  _this->_impl_._has_bits_[0] |= cached_has_bits;
   if (const uint32_t oneof_from_case =
           from._impl_._oneof_case_[0]) {
     const uint32_t oneof_to_case = _this->_impl_._oneof_case_[0];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
-        _this->clear_request();
+        _this->clear_resopnse();
       }
       _this->_impl_._oneof_case_[0] = oneof_from_case;
     }
@@ -875,13 +779,13 @@ void Response::MergeImpl(::google::protobuf::MessageLite& to_msg,
     switch (oneof_from_case) {
       case kHealthCheck: {
         if (oneof_needs_init) {
-          _this->_impl_.request_.health_check_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.request_.health_check_);
+          _this->_impl_.resopnse_.health_check_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.resopnse_.health_check_);
         } else {
-          _this->_impl_.request_.health_check_->MergeFrom(*from._impl_.request_.health_check_);
+          _this->_impl_.resopnse_.health_check_->MergeFrom(*from._impl_.resopnse_.health_check_);
         }
         break;
       }
-      case REQUEST_NOT_SET:
+      case RESOPNSE_NOT_SET:
         break;
     }
   }
@@ -900,9 +804,7 @@ void Response::CopyFrom(const Response& from) {
 void Response::InternalSwap(Response* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  swap(_impl_.id_, other->_impl_.id_);
-  swap(_impl_.request_, other->_impl_.request_);
+  swap(_impl_.resopnse_, other->_impl_.resopnse_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 

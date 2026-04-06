@@ -409,9 +409,9 @@ class Response final : public ::google::protobuf::Message
     return *reinterpret_cast<const Response*>(
         &_Response_default_instance_);
   }
-  enum RequestCase {
+  enum ResopnseCase {
     kHealthCheck = 2,
-    REQUEST_NOT_SET = 0,
+    RESOPNSE_NOT_SET = 0,
   };
   static constexpr int kIndexInFileMessages = 1;
   friend void swap(Response& a, Response& b) { a.Swap(&b); }
@@ -500,19 +500,8 @@ class Response final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kIdFieldNumber = 1,
     kHealthCheckFieldNumber = 2,
   };
-  // uint32 id = 1;
-  void clear_id() ;
-  ::uint32_t id() const;
-  void set_id(::uint32_t value);
-
-  private:
-  ::uint32_t _internal_id() const;
-  void _internal_set_id(::uint32_t value);
-
-  public:
   // .agent.command.HealthCheckResponse health_check = 2;
   bool has_health_check() const;
   private:
@@ -532,16 +521,16 @@ class Response final : public ::google::protobuf::Message
   ::agent::command::HealthCheckResponse* PROTOBUF_NONNULL _internal_mutable_health_check();
 
   public:
-  void clear_request();
-  RequestCase request_case() const;
+  void clear_resopnse();
+  ResopnseCase resopnse_case() const;
   // @@protoc_insertion_point(class_scope:agent.command.Response)
  private:
   class _Internal;
   void set_has_health_check();
-  inline bool has_request() const;
-  inline void clear_has_request();
+  inline bool has_resopnse() const;
+  inline void clear_has_resopnse();
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<0, 2,
+  static const ::google::protobuf::internal::TcParseTable<0, 1,
                                    1, 0,
                                    2>
       _table_;
@@ -561,14 +550,12 @@ class Response final : public ::google::protobuf::Message
         ::google::protobuf::internal::InternalVisibility visibility,
         ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
         const Response& from_msg);
-    ::google::protobuf::internal::HasBits<1> _has_bits_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    ::uint32_t id_;
-    union RequestUnion {
-      constexpr RequestUnion() : _constinit_{} {}
+    union ResopnseUnion {
+      constexpr ResopnseUnion() : _constinit_{} {}
       ::google::protobuf::internal::ConstantInitialized _constinit_;
       ::agent::command::HealthCheckResponse* PROTOBUF_NULLABLE health_check_;
-    } request_;
+    } resopnse_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
     ::uint32_t _oneof_case_[1];
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -725,19 +712,8 @@ class Request final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kIdFieldNumber = 1,
     kHealthCheckFieldNumber = 2,
   };
-  // uint32 id = 1;
-  void clear_id() ;
-  ::uint32_t id() const;
-  void set_id(::uint32_t value);
-
-  private:
-  ::uint32_t _internal_id() const;
-  void _internal_set_id(::uint32_t value);
-
-  public:
   // .agent.command.HealthCheckRequest health_check = 2;
   bool has_health_check() const;
   private:
@@ -766,7 +742,7 @@ class Request final : public ::google::protobuf::Message
   inline bool has_request() const;
   inline void clear_has_request();
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<0, 2,
+  static const ::google::protobuf::internal::TcParseTable<0, 1,
                                    1, 0,
                                    2>
       _table_;
@@ -786,14 +762,12 @@ class Request final : public ::google::protobuf::Message
         ::google::protobuf::internal::InternalVisibility visibility,
         ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
         const Request& from_msg);
-    ::google::protobuf::internal::HasBits<1> _has_bits_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    ::uint32_t id_;
     union RequestUnion {
       constexpr RequestUnion() : _constinit_{} {}
       ::google::protobuf::internal::ConstantInitialized _constinit_;
       ::agent::command::HealthCheckRequest* PROTOBUF_NULLABLE health_check_;
     } request_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
     ::uint32_t _oneof_case_[1];
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -818,31 +792,6 @@ extern const ::google::protobuf::internal::ClassDataFull Request_class_data_;
 // -------------------------------------------------------------------
 
 // Request
-
-// uint32 id = 1;
-inline void Request::clear_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.id_ = 0u;
-  ClearHasBit(_impl_._has_bits_[0],
-                  0x00000001U);
-}
-inline ::uint32_t Request::id() const {
-  // @@protoc_insertion_point(field_get:agent.command.Request.id)
-  return _internal_id();
-}
-inline void Request::set_id(::uint32_t value) {
-  _internal_set_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:agent.command.Request.id)
-}
-inline ::uint32_t Request::_internal_id() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.id_;
-}
-inline void Request::_internal_set_id(::uint32_t value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.id_ = value;
-}
 
 // .agent.command.HealthCheckRequest health_check = 2;
 inline bool Request::has_health_check() const {
@@ -939,68 +888,43 @@ inline Request::RequestCase Request::request_case() const {
 
 // Response
 
-// uint32 id = 1;
-inline void Response::clear_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.id_ = 0u;
-  ClearHasBit(_impl_._has_bits_[0],
-                  0x00000001U);
-}
-inline ::uint32_t Response::id() const {
-  // @@protoc_insertion_point(field_get:agent.command.Response.id)
-  return _internal_id();
-}
-inline void Response::set_id(::uint32_t value) {
-  _internal_set_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:agent.command.Response.id)
-}
-inline ::uint32_t Response::_internal_id() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.id_;
-}
-inline void Response::_internal_set_id(::uint32_t value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.id_ = value;
-}
-
 // .agent.command.HealthCheckResponse health_check = 2;
 inline bool Response::has_health_check() const {
-  return request_case() == kHealthCheck;
+  return resopnse_case() == kHealthCheck;
 }
 inline bool Response::_internal_has_health_check() const {
-  return request_case() == kHealthCheck;
+  return resopnse_case() == kHealthCheck;
 }
 inline void Response::set_has_health_check() {
   _impl_._oneof_case_[0] = kHealthCheck;
 }
 inline void Response::clear_health_check() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (request_case() == kHealthCheck) {
+  if (resopnse_case() == kHealthCheck) {
     if (GetArena() == nullptr) {
-      delete _impl_.request_.health_check_;
+      delete _impl_.resopnse_.health_check_;
     } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_.health_check_);
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.resopnse_.health_check_);
     }
-    clear_has_request();
+    clear_has_resopnse();
   }
 }
 inline ::agent::command::HealthCheckResponse* PROTOBUF_NULLABLE Response::release_health_check() {
   // @@protoc_insertion_point(field_release:agent.command.Response.health_check)
-  if (request_case() == kHealthCheck) {
-    clear_has_request();
-    auto* temp = _impl_.request_.health_check_;
+  if (resopnse_case() == kHealthCheck) {
+    clear_has_resopnse();
+    auto* temp = _impl_.resopnse_.health_check_;
     if (GetArena() != nullptr) {
       temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
     }
-    _impl_.request_.health_check_ = nullptr;
+    _impl_.resopnse_.health_check_ = nullptr;
     return temp;
   } else {
     return nullptr;
   }
 }
 inline const ::agent::command::HealthCheckResponse& Response::_internal_health_check() const {
-  return request_case() == kHealthCheck ? static_cast<const ::agent::command::HealthCheckResponse&>(*_impl_.request_.health_check_)
+  return resopnse_case() == kHealthCheck ? static_cast<const ::agent::command::HealthCheckResponse&>(*_impl_.resopnse_.health_check_)
                      : reinterpret_cast<const ::agent::command::HealthCheckResponse&>(::agent::command::_HealthCheckResponse_default_instance_);
 }
 inline const ::agent::command::HealthCheckResponse& Response::health_check() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
@@ -1009,10 +933,10 @@ inline const ::agent::command::HealthCheckResponse& Response::health_check() con
 }
 inline ::agent::command::HealthCheckResponse* PROTOBUF_NULLABLE Response::unsafe_arena_release_health_check() {
   // @@protoc_insertion_point(field_unsafe_arena_release:agent.command.Response.health_check)
-  if (request_case() == kHealthCheck) {
-    clear_has_request();
-    auto* temp = _impl_.request_.health_check_;
-    _impl_.request_.health_check_ = nullptr;
+  if (resopnse_case() == kHealthCheck) {
+    clear_has_resopnse();
+    auto* temp = _impl_.resopnse_.health_check_;
+    _impl_.resopnse_.health_check_ = nullptr;
     return temp;
   } else {
     return nullptr;
@@ -1023,21 +947,21 @@ inline void Response::unsafe_arena_set_allocated_health_check(
   // We rely on the oneof clear method to free the earlier contents
   // of this oneof. We can directly use the pointer we're given to
   // set the new value.
-  clear_request();
+  clear_resopnse();
   if (value) {
     set_has_health_check();
-    _impl_.request_.health_check_ = value;
+    _impl_.resopnse_.health_check_ = value;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:agent.command.Response.health_check)
 }
 inline ::agent::command::HealthCheckResponse* PROTOBUF_NONNULL Response::_internal_mutable_health_check() {
-  if (request_case() != kHealthCheck) {
-    clear_request();
+  if (resopnse_case() != kHealthCheck) {
+    clear_resopnse();
     set_has_health_check();
-    _impl_.request_.health_check_ = 
+    _impl_.resopnse_.health_check_ = 
         ::google::protobuf::Message::DefaultConstruct<::agent::command::HealthCheckResponse>(GetArena());
   }
-  return _impl_.request_.health_check_;
+  return _impl_.resopnse_.health_check_;
 }
 inline ::agent::command::HealthCheckResponse* PROTOBUF_NONNULL Response::mutable_health_check()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
@@ -1046,14 +970,14 @@ inline ::agent::command::HealthCheckResponse* PROTOBUF_NONNULL Response::mutable
   return _msg;
 }
 
-inline bool Response::has_request() const {
-  return request_case() != REQUEST_NOT_SET;
+inline bool Response::has_resopnse() const {
+  return resopnse_case() != RESOPNSE_NOT_SET;
 }
-inline void Response::clear_has_request() {
-  _impl_._oneof_case_[0] = REQUEST_NOT_SET;
+inline void Response::clear_has_resopnse() {
+  _impl_._oneof_case_[0] = RESOPNSE_NOT_SET;
 }
-inline Response::RequestCase Response::request_case() const {
-  return Response::RequestCase(_impl_._oneof_case_[0]);
+inline Response::ResopnseCase Response::resopnse_case() const {
+  return Response::ResopnseCase(_impl_._oneof_case_[0]);
 }
 // -------------------------------------------------------------------
 

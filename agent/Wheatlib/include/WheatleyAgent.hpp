@@ -16,8 +16,11 @@ public:
     void connect(const std::string& ip, int port);
     void disconnect();
 
-    agent::command::Request recvCommand();
+    agent::command::Request recvCommandRequest();
+    agent::command::Response processCommandRequest(agent::command::Request request);
+    void sendCommandResponse(agent::command::Response response);
 
 private:
+
     std::unique_ptr<TcpConnection> m_connection;
 };

@@ -77,7 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Sockets\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)WheatleyProto\include;$(SolutionDir)Wheatlib\include;$(SolutionDir)Sockets\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/external:W0 /external:I C:\Users\nadav\Documents\vcpkg\installed\x64-windows\include %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -94,7 +94,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Sockets\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)WheatleyProto\include;$(SolutionDir)Wheatlib\include;$(SolutionDir)Sockets\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/external:W0 /external:I C:\Users\nadav\Documents\vcpkg\installed\x64-windows\include %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -109,7 +109,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Sockets\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)WheatleyProto\include;$(SolutionDir)Wheatlib\include;$(SolutionDir)Sockets\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/external:W0 /external:I C:\Users\nadav\Documents\vcpkg\installed\x64-windows\include %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -126,7 +126,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Sockets\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)WheatleyProto\include;$(SolutionDir)Wheatlib\include;$(SolutionDir)Sockets\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/external:W0 /external:I C:\Users\nadav\Documents\vcpkg\installed\x64-windows\include %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -138,6 +138,9 @@
     <ClCompile Include="Wheatley.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sockets\Sockets.vcxproj">
+      <Project>{cacf291a-8deb-4312-abf7-a429a4aa6412}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\WheatleyProto\WheatleyProto.vcxproj">
       <Project>{43f376f1-3010-4e99-a498-25b5ebea1c83}</Project>
     </ProjectReference>
