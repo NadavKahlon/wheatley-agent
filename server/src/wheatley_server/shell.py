@@ -15,12 +15,13 @@ class LocalShell:
 
     def _prepare_user_ns(self):
         return {
+            "server": lambda: self._server,
             "get_conn": lambda conn_id: self._server.connections[conn_id],
             "list_conns": lambda: list(self._server.connections),
             "connections": self._server.connections,
         }
 
-    async def launch(self) -> None:
+    def run(self) -> None:
         shell = InteractiveShellEmbed(
             user_ns=self._prepare_user_ns(),
             colors="neutral",

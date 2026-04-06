@@ -1,6 +1,5 @@
 import argparse
-import asyncio
-from venv import logger
+import threading
 
 from wheatley_server.constants import (
     WHEATLY_SERVER_PORT,
@@ -23,27 +22,27 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def start_interactive(args: argparse.Namespace):
+    print(WHEATLEY_SERVER_INTERACTIVE_BANNER)
+    server = WheatleyServer((WHEATLY_SERVER_HOST, WHEATLY_SERVER_PORT))
+    server_thread = threading.Thread(target=server.run)
+    server_thread.start()
+    LocalShell(server).run()
+    server.shutdown_event.set()
+
+
+def start_non_interactive(args: argparse.Namespace):
+    print(WHEATLEY_SERVER_BANNER)
+    server = WheatleyServer((WHEATLY_SERVER_HOST, WHEATLY_SERVER_PORT))
+    try:
+        server.run()
+    except KeyboardInterrupt:
+        return
+
+
 def start():
     args = parse_args()
-    server = WheatleyServer(WHEATLY_SERVER_HOST, WHEATLY_SERVER_PORT)
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-
-    try:
-        if args.interactive:
-            print(WHEATLEY_SERVER_INTERACTIVE_BANNER)
-            shell = LocalShell(server)
-            loop.create_task(shell.launch())
-        else:
-            print(WHEATLEY_SERVER_BANNER)
-        loop.run_until_complete(server.run())
-        loop.run_forever()
-
-    except KeyboardInterrupt:
-        pass
-    finally:
-        tasks = asyncio.all_tasks(loop)
-        for t in tasks:
-            t.cancel()
-        loop.run_until_complete(asyncio.gather(*tasks, return_exceptions=True))
-        loop.close()
+    if args.interactive:
+        start_interactive(args)
+    else:
+        start_non_interactive(args)
