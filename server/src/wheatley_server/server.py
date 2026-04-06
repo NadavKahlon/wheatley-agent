@@ -4,21 +4,21 @@ from itertools import count
 
 from loguru import logger
 
-from wheatley_server.agent.connection import AgentConnection
+from wheatley_server.agent.conn import AgentConnection
 from wheatley_server.network import is_socket_closed
 
 
 class WheatleyServer:
 
     address: tuple[str, int]
-    connections: dict[int, AgentConnection]  # TODO Implement locking
+    agent_conns: dict[int, AgentConnection]  # TODO Implement locking
     _agent_conn_id_gen: count
     _sock: socket.socket | None = None
     shutdown_event: threading.Event | None = None
 
     def __init__(self, address: tuple[str, int]):
         self.address = address
-        self.connections = {}
+        self.agent_conns = {}
         self._agent_conn_id_gen = count(1)
 
     @property
@@ -42,7 +42,7 @@ class WheatleyServer:
                 try:
                     conn, addr = self._sock.accept()
                     conn_id = next(self._agent_conn_id_gen)
-                    self.connections[conn_id] = AgentConnection(
+                    self.agent_conns[conn_id] = AgentConnection(
                         conn_id, conn, addr, self
                     )
                 except socket.timeout:
@@ -50,10 +50,10 @@ class WheatleyServer:
 
                 if self.shutdown_event.is_set():
                     break
-                for conn_id, conn in list(self.connections.items()):
+                for conn_id, conn in list(self.agent_conns.items()):
                     if is_socket_closed(conn.sock):
                         conn.close()
-                        del self.connections[conn_id]
+                        del self.agent_conns[conn_id]
 
         finally:
             self._sock.close()

@@ -19,17 +19,17 @@ class AgentConnection:
 
     def __init__(
         self,
-        conn_id: int,
+        agent_conn_id: int,
         sock: socket.socket,
         address: tuple[str, int],
         server: "WheatleyServer",
     ):
         host, port = address
-        self.id = conn_id
+        self.id = agent_conn_id
         self.sock = sock
         self.address = address
         self._server = server
-        logger.info(f"{self}: Initialized new connection")
+        logger.info(f"{self}: New agent connection")
 
     def __repr__(self) -> str:
         host, port = self.address

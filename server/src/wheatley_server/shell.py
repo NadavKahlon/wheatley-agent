@@ -1,6 +1,5 @@
 from typing import TYPE_CHECKING
 
-import IPython
 from IPython.terminal.embed import InteractiveShellEmbed
 
 if TYPE_CHECKING:
@@ -16,9 +15,9 @@ class LocalShell:
     def _prepare_user_ns(self):
         return {
             "server": lambda: self._server,
-            "get_conn": lambda conn_id: self._server.connections[conn_id],
-            "list_conns": lambda: list(self._server.connections),
-            "connections": self._server.connections,
+            "get_agent_conn": lambda conn_id: self._server.agent_conns[conn_id],
+            "list_agent_conns": lambda: list(self._server.agent_conns),
+            "agent_conns": self._server.agent_conns,
         }
 
     def run(self) -> None:
