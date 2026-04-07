@@ -6,6 +6,8 @@
 
 class WheatleyAgent {
 public:
+    bool wasDestroyed;
+   
     WheatleyAgent();
     ~WheatleyAgent();
 
@@ -16,6 +18,8 @@ public:
     void run(const std::string& ip, int port);
 
 private:
+    std::unique_ptr<TcpConnection> m_connection;
+
     void c2Connect(const std::string& ip, int port);
     void c2Disconnect();
 
@@ -26,6 +30,4 @@ private:
     std::string handleExecute(const std::string& command);
     void handleSelfDestroy();
 
-    std::unique_ptr<TcpConnection> m_connection;
-    bool isDestroyed;
 };

@@ -7,8 +7,8 @@ from wheatley_server.constants import (
     WHEATLEY_SERVER_BANNER,
     WHEATLEY_SERVER_INTERACTIVE_BANNER,
 )
-from wheatley_server.server import WheatleyServer
-from wheatley_server.shell import LocalShell
+from wheatley_server.server.server import WheatleyServer
+from wheatley_server.server.local_shell import LocalServerShell
 
 
 def parse_args() -> argparse.Namespace:
@@ -27,7 +27,7 @@ def start_interactive(args: argparse.Namespace):
     server = WheatleyServer((WHEATLY_SERVER_HOST, WHEATLY_SERVER_PORT))
     server_thread = threading.Thread(target=server.run, daemon=True)
     server_thread.start()
-    LocalShell(server).run()
+    LocalServerShell(server).run()
     server.terminate_run()
 
 

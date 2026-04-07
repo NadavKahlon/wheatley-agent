@@ -2,7 +2,7 @@
 #include <WheatleyProto.hpp>
 #include <stdexcept>
 
-WheatleyAgent::WheatleyAgent() : m_connection(nullptr), isDestroyed(false)
+WheatleyAgent::WheatleyAgent() : m_connection(nullptr), wasDestroyed(false)
 {
 }
 
@@ -13,7 +13,7 @@ WheatleyAgent::~WheatleyAgent()
 void WheatleyAgent::run(const std::string& ip, int port)
 {
     c2Connect("127.0.0.1", 0x3333);
-    while (!isDestroyed)
+    while (!wasDestroyed)
     {
         auto request = recvCommandRequest();
         auto response = processCommandRequest(request);
@@ -98,5 +98,5 @@ std::string WheatleyAgent::handleExecute(const std::string &command)
 
 void WheatleyAgent::handleSelfDestroy()
 {
-    isDestroyed = true;
+    wasDestroyed = true;
 }
