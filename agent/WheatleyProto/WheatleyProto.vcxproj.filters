@@ -18,12 +18,18 @@
     <ClCompile Include="proto\agent\command.pb.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="proto\stream.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="proto\agent\command.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\WheatleyProto.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="proto\stream.pb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

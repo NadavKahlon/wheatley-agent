@@ -20,10 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="proto\agent\command.pb.cc" />
+    <ClCompile Include="proto\stream.pb.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\WheatleyProto.hpp" />
     <ClInclude Include="proto\agent\command.pb.h" />
+    <ClInclude Include="proto\stream.pb.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
