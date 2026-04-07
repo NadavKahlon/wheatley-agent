@@ -82,6 +82,13 @@ agent::command::Response WheatleyAgent::processCommandRequest(agent::command::Re
         break;
     }
 
+    // Put file handler
+    case agent::command::Request::kPutFile: {
+        handlePutFile(request.put_file().path());
+        response.mutable_put_file();
+        break;
+    }
+
     case agent::command::Request::REQUEST_NOT_SET:
     default:
         throw std::runtime_error("Request type not set.");
@@ -131,4 +138,21 @@ void WheatleyAgent::handleGetFile(const std::string& path, std::uint32_t suggest
     packet.set_chunk(buffer.data(), 0);
     packet.set_is_last(true);
     m_connection->sendProtobuf<stream::WheatleyStreamPacket>(packet);
+}
+
+void WheatleyAgent::handlePutFile(const std::string& path)
+{
+    stream::WheatleyStreamPacket packet;
+    std::ofstream file(path, std::ios::binary);
+    std::string chunk;
+    if (!file.is_open()) {
+        throw std::runtime_error("Could not open file: " + path);
+    }
+    do {
+        packet = m_connection->recvProtobuf<stream::WheatleyStreamPacket>();
+        chunk = packet.chunk();
+        if (!chunk.empty()) {
+            file.write(chunk.data(), chunk.size());
+        }
+    } while (!packet.is_last());
 }

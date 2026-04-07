@@ -62,12 +62,11 @@ def recv_stream(sock: socket.socket) -> Iterator[bytes]:
 
 
 def send_stream(sock: socket.socket, stream: BinaryIO, chunk_size: int = 4096) -> None:
-    next_chunk = stream.read(chunk_size)
-    while next_chunk != "":
-        curr_chunk = next_chunk
-        next_chunk = stream.read(chunk_size)
-
-        packet = stream_pb2.WheatleyStreamPacket()
-        packet.chunk = curr_chunk
-        packet.is_last = next_chunk == ""
+    while True:
+        chunk = stream.read(chunk_size)
+        if len(chunk) == 0:
+            break
+        packet = stream_pb2.WheatleyStreamPacket(chunk=chunk, is_last=False)
         send_protobuf(sock, packet)
+    packet = stream_pb2.WheatleyStreamPacket(chunk=b"", is_last=True)
+    send_protobuf(sock, packet)
