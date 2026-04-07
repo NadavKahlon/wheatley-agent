@@ -4,6 +4,7 @@ package agent.command;
 
 message Request {
     oneof request {
+        SelfDestroyRequest self_destroy = 1;
         HealthCheckRequest health_check = 2;
         ExecuteRequest execute = 3;
         GetFileRequest get_file = 4;
@@ -13,12 +14,18 @@ message Request {
 
 message Response {
     oneof response {
+        SelfDestroyResponse self_destroy = 1;
         HealthCheckResponse health_check = 2;
         ExecuteResponse execute = 3;
         GetFileResponse get_file = 4;
         PutFileResponse put_file = 5;
     }
 }
+
+message SelfDestroyRequest {}
+
+message SelfDestroyResponse {}
+
 
 message HealthCheckRequest {}
 

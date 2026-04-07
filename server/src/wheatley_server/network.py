@@ -37,8 +37,9 @@ def send_protobuf(sock: socket.socket, msg: Message) -> None:
 
 
 def is_socket_closed(sock: socket.socket) -> bool:
+    original_timeout = sock.gettimeout()
     try:
-        # Peek into buffer
+        sock.settimeout(0)
         data = sock.recv(1, socket.MSG_PEEK)
         if len(data) == 0:
             return True
@@ -46,6 +47,8 @@ def is_socket_closed(sock: socket.socket) -> bool:
         return False  # socket is open and reading from it would block
     except ConnectionResetError:
         return True  # socket was closed for some other reason
+    finally:
+        sock.settimeout(original_timeout)  # Restore original state
     return False
 
 

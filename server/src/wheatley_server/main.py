@@ -25,10 +25,10 @@ def parse_args() -> argparse.Namespace:
 def start_interactive(args: argparse.Namespace):
     print(WHEATLEY_SERVER_INTERACTIVE_BANNER)
     server = WheatleyServer((WHEATLY_SERVER_HOST, WHEATLY_SERVER_PORT))
-    server_thread = threading.Thread(target=server.run)
+    server_thread = threading.Thread(target=server.run, daemon=True)
     server_thread.start()
     LocalShell(server).run()
-    server.shutdown_event.set()
+    server.terminate_run()
 
 
 def start_non_interactive(args: argparse.Namespace):

@@ -18,6 +18,7 @@ class LocalShell:
             "get_agent_conn": lambda conn_id: self._server.agent_conns[conn_id],
             "list_agent_conns": lambda: list(self._server.agent_conns),
             "agent_conns": self._server.agent_conns,
+            "a": lambda: self._server.agent_conns.values(),
         }
 
     def run(self) -> None:

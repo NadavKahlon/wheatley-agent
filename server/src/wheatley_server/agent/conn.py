@@ -31,7 +31,6 @@ class AgentConnection:
         address: tuple[str, int],
         server: "WheatleyServer",
     ):
-        host, port = address
         self.id = agent_conn_id
         self.sock = sock
         self.address = address
@@ -68,6 +67,9 @@ class AgentConnection:
 
     def execute(self, command: str) -> str:
         return self._raw_command_interaction("execute", command=command)["output"]
+
+    def kill(self) -> None:
+        self._raw_command_interaction("self_destroy")
 
     def get_file(
         self, remote_path: str, local_path: str, suggested_chunk_size: int = 4096
