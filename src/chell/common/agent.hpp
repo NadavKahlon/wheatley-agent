@@ -1,13 +1,13 @@
 #pragma once
 
 #include <string>
-#include <wheatley/common/network/protobuf_connection.hpp>
-#include <wheatley_protos/commands.pb.h>
+#include <chell/common/network/protobuf_connection.hpp>
+#include <chell_protos/commands.pb.h>
 
-using namespace wheatley_protos;
+using namespace chell_protos;
 
 
-namespace wheatley {
+namespace chell {
 
 class Agent {
 public:
@@ -23,7 +23,7 @@ public:
     void run(const std::string& ip, int port);
 
 private:
-    std::unique_ptr<wheatley::network::ProtobufConnection> m_connection;
+    std::unique_ptr<chell::network::ProtobufConnection> m_connection;
 
     void c2Connect(const std::string& ip, int port);
     void c2Disconnect();

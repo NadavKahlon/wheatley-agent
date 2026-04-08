@@ -1,11 +1,11 @@
 #include <stdexcept>
 #include <ws2tcpip.h>
 #include <string>
-#include <wheatley/common/network/context.hpp>
+#include <chell/common/network/context.hpp>
 
 #pragma comment(lib, "Ws2_32.lib")
 
-using namespace wheatley::network;
+using namespace chell::network;
     
 Context::Context()
 {

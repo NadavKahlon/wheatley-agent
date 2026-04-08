@@ -1,8 +1,8 @@
 #include <stdexcept>
 #include <WS2tcpip.h>
-#include <wheatley/common/network/tcp_connection.hpp>
+#include <chell/common/network/tcp_connection.hpp>
 
-using namespace wheatley::network;
+using namespace chell::network;
 
 
 TcpConnection::TcpConnection(const std::string& ip, int port) : 

@@ -6,10 +6,10 @@
 #include <winsock.h>
 #include <memory>
 #include <stdexcept>
-#include <wheatley/common/network/context.hpp>
+#include <chell/common/network/context.hpp>
 #include <google/protobuf/message.h>
 
-namespace wheatley::network {
+namespace chell::network {
 
 class TcpConnection {
 public:

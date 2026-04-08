@@ -1,6 +1,6 @@
 #pragma once
 
-namespace wheatley::network {
+namespace chell::network {
 
 class Context {
 public:

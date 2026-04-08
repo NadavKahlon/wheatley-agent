@@ -1,6 +1,6 @@
-#include <wheatley/common/network/tcp_connection.hpp>
+#include <chell/common/network/tcp_connection.hpp>
 
-namespace wheatley::network {
+namespace chell::network {
 
 class ProtobufConnection : public TcpConnection {
 public:

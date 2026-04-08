@@ -1,15 +1,15 @@
 #include <stdexcept>
 #include <iostream>
 #include <fstream>
-#include <wheatley/common/stdio.hpp>
-#include <wheatley/common/agent.hpp>
-#include <wheatley_protos/commands.pb.h>
-#include <wheatley_protos/chunked_transfer.pb.h>
+#include <chell/common/stdio.hpp>
+#include <chell/common/agent.hpp>
+#include <chell_protos/commands.pb.h>
+#include <chell_protos/chunked_transfer.pb.h>
 
 
-using namespace wheatley;
-using namespace wheatley_protos;
-using namespace wheatley_protos::chunked_transfer;
+using namespace chell;
+using namespace chell_protos;
+using namespace chell_protos::chunked_transfer;
 
 
 Agent::Agent() : m_connection(nullptr), wasDestroyed(false)
