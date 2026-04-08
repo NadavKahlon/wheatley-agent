@@ -5,17 +5,20 @@ project(wheatley VERSION 0.1.0)
 
 # Common sources
 file(GLOB_RECURSE SOURCES 
-    "src/wheatley/common/*.cpp"
+    "src/wheatley/agent.cpp"
+    "src/wheatley/main.cpp"
 )
 
 # Platform-specific sources
 if(WIN32)
     file(GLOB_RECURSE PLATFORM_SOURCES 
-        "src/wheatley/windows/*.cpp"
+        "src/wheatley/windows/network/context.cpp"
+        "src/wheatley/windows/network/tcp_connection.cpp"
     )
 elseif(UNIX AND NOT APPLE)
     file(GLOB_RECURSE PLATFORM_SOURCES 
-        "src/wheatley/linux/*.cpp"
+        "src/wheatley/linux/network/context.cpp"
+        "src/wheatley/linux/network/tcp_connection.cpp"
     )
 endif()
 list(APPEND SOURCES ${PLATFORM_SOURCES})

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <wheatley/common/network/tcp_connection.hpp>
+#include <wheatley/common/network/protobuf_connection.hpp>
 #include <wheatley_protos/commands.pb.h>
 
 using namespace wheatley_protos;
@@ -23,7 +23,7 @@ public:
     void run(const std::string& ip, int port);
 
 private:
-    std::unique_ptr<wheatley::network::TcpConnection> m_connection;
+    std::unique_ptr<wheatley::network::ProtobufConnection> m_connection;
 
     void c2Connect(const std::string& ip, int port);
     void c2Disconnect();

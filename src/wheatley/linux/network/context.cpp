@@ -1,4 +1,4 @@
-#include <wheatley/network/context.hpp>
+#include <wheatley/common/network/context.hpp>
 
 using namespace wheatley::network;
 
