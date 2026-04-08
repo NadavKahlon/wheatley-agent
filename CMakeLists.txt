@@ -4,22 +4,21 @@ project(wheatley VERSION 0.1.0)
 
 
 # Common sources
-set(SOURCES
-    src/wheatley/common/main.cpp
-    src/wheatley/common/network/tcp_connection.cpp
-    src/wheatley/common/agent.cpp
+file(GLOB_RECURSE SOURCES 
+    "src/wheatley/common/*.cpp"
 )
 
 # Platform-specific sources
 if(WIN32)
-    list(APPEND SOURCES 
-        src/wheatley/windows/network_context.cpp
+    file(GLOB_RECURSE PLATFORM_SOURCES 
+        "src/wheatley/windows/*.cpp"
     )
 elseif(UNIX AND NOT APPLE)
-    list(APPEND SOURCES 
-        src/wheatley/linux/network_context.cpp
+    file(GLOB_RECURSE PLATFORM_SOURCES 
+        "src/wheatley/linux/*.cpp"
     )
 endif()
+list(APPEND SOURCES ${PLATFORM_SOURCES})
 
 # Add target to compile `wheatley.exe` from sources
 add_executable(${PROJECT_NAME} ${SOURCES})
