@@ -1,11 +1,13 @@
 #include <stdexcept>
 #include <ws2tcpip.h>
 #include <string>
-#include <WinsockContext.hpp>
+#include <wheatley/common/network/context.hpp>
 
 #pragma comment(lib, "Ws2_32.lib")
 
-WinsockContext::WinsockContext()
+using namespace wheatley::network;
+    
+Context::Context()
 {
     // TODO Maintain a static atomic counter so that we'll only need to do it once
     WSADATA wsaData;
@@ -15,7 +17,7 @@ WinsockContext::WinsockContext()
     }
 }
 
-WinsockContext::~WinsockContext()
+Context::~Context()
 {
     WSACleanup();
 }

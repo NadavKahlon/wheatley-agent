@@ -1,25 +1,3 @@
-## Visual Studio Essentials
-.vs/
-[Bb]in/
-[Oo]bj/
-out/
-Generated\ Files/
-
-## User-specific files
-*.rsuser
-*.suo
-*.user
-*.userosscache
-*.sln.docuser
-
-## Build results
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
-build/
-
-# Protobuf generated files
-*.pb.cc
-*.pb.h
-WheatleyProto/proto
+build
+.vs
+out

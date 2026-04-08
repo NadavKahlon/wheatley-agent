@@ -1,10 +1,12 @@
 #include <stdexcept>
 #include <WS2tcpip.h>
-#include <TcpConnection.hpp>
+#include <wheatley/common/network/tcp_connection.hpp>
+
+using namespace wheatley::network;
 
 
 TcpConnection::TcpConnection(const std::string& ip, int port) : 
-        m_context(std::make_unique<WinsockContext>()),
+        m_context(std::make_unique<Context>()),
         m_socket(INVALID_SOCKET)
 {
     m_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);

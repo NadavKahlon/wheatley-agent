@@ -6,8 +6,10 @@
 #include <winsock.h>
 #include <memory>
 #include <stdexcept>
-#include <WinsockContext.hpp>
+#include <wheatley/common/network/context.hpp>
 #include <google/protobuf/message.h>
+
+namespace wheatley::network {
 
 class TcpConnection {
 public:
@@ -80,6 +82,8 @@ public:
     }
 
 private:
-    std::unique_ptr<WinsockContext> m_context;
+    std::unique_ptr<Context> m_context;
     SOCKET m_socket;
 };
+
+}
