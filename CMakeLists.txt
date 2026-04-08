@@ -29,16 +29,16 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 # Enable `#include` from `src/` when compiling `chell.exe`
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/src)
 
-# Link target against `chell_protos` library
+# Link target against `aperture_protos` library
 include(FetchContent)
 FetchContent_Declare(
-  chell_protos
-  GIT_REPOSITORY https://github.com/NadavKahlon/chell-protos.git
-  GIT_TAG        c836a69
+  aperture_protos
+  GIT_REPOSITORY https://github.com/NadavKahlon/aperture-c2-protos.git
+  GIT_TAG        dev
 )
-FetchContent_MakeAvailable(chell_protos)
-target_link_libraries(${PROJECT_NAME} PUBLIC chell_protos)
+FetchContent_MakeAvailable(aperture_protos)
+target_link_libraries(${PROJECT_NAME} PUBLIC aperture_protos)
 target_include_directories(${PROJECT_NAME} PRIVATE 
-    ${chell_protos_SOURCE_DIR}
-    ${chell_protos_BINARY_DIR}
+    ${aperture_protos_SOURCE_DIR}
+    ${aperture_protos_BINARY_DIR}
 )

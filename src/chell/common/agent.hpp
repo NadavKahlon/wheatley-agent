@@ -2,9 +2,9 @@
 
 #include <string>
 #include <chell/common/network/protobuf_connection.hpp>
-#include <chell_protos/commands.pb.h>
+#include <aperture_protos/commands.pb.h>
 
-using namespace chell_protos;
+using namespace aperture_protos;
 
 
 namespace chell {

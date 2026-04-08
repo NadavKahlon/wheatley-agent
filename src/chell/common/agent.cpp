@@ -3,13 +3,13 @@
 #include <fstream>
 #include <chell/common/stdio.hpp>
 #include <chell/common/agent.hpp>
-#include <chell_protos/commands.pb.h>
-#include <chell_protos/chunked_transfer.pb.h>
+#include <aperture_protos/commands.pb.h>
+#include <aperture_protos/chunked_transfer.pb.h>
 
 
 using namespace chell;
-using namespace chell_protos;
-using namespace chell_protos::chunked_transfer;
+using namespace aperture_protos;
+using namespace aperture_protos::chunked_transfer;
 
 
 Agent::Agent() : m_connection(nullptr), wasDestroyed(false)
